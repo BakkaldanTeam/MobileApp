@@ -4,13 +4,8 @@
     <description>
         Bakkaldan Mobile Application
     </description>
-<<<<<<< HEAD
     <author email="info@sagclick.com" href="http://sagclick.com">
         Bakkaldan Team
-=======
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        Bakkaldan Team B&F
->>>>>>> origin/master
     </author>
     <content src="index.html" />
     <preference name="permissions" value="none" />
