@@ -24,7 +24,7 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
+    background-color:#FFFFFF;
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:12px;
@@ -119,7 +119,7 @@ h1 {
         margin-left: 70px;
     }
 
-#appLogin {
+#appLogin, #appForgotPW {
     background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
     position:absolute;             /* position in the center of the screen */
     left:50%;
@@ -131,3 +131,41 @@ h1 {
     margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
                                    /* offset horizontal: half of text area width */
 }
+
+
+#appAddress{
+
+}
+
+    .appInnerHeader{
+      text-align: center;  
+      margin-top: 30px;  
+      margin-left: 5%;  
+      margin-right: 5%;
+      margin-bottom: 30px;
+    }
+
+    .appInnerHeaderItem{ 
+        display:inline-block;
+        width:32%; 
+         cursor: pointer;
+
+    }
+
+    .aAHISelected{
+        border-bottom-style: solid;  
+        border-bottom-color: #393939;
+    }
+
+     #map-canvas {
+            height: 200px;
+            margin: 20px 0px 20px 0px;
+            padding: 0px;
+          }
+
+    #map-tarif{
+        width: 100%;
+        height: 100px;
+        text-align: left;
+        margin-bottom: 20px;
+    }
