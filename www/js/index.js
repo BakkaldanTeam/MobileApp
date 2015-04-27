@@ -43,40 +43,7 @@ var app = {
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
-		
-		document.getElementById("deviceInfo").innerHTML = device.platform;
-		/*
-		var postData = '{"aksiyon":"kurGetir","data":{"":""}}';
-		console.log(postData);
-		$.post("https://www.kargoweb.com/KGWBCRM/com/kargoweb/DEBUG/debugger.php", { bilgi: postData}).done(
-			function(data){
-				//console.log(data); 
-				var sonuc = JSON.parse(data);
-				if(sonuc.response==true){
-					alert("Kargoweb API Kur:" + sonuc.data);
-					$("#deviceInfo").html("Kargoweb API Kur:" + sonuc.data);
-				}
-			}
-		);*/
-		var onSuccess = function(position) {
-			alert('Latitude: '          + position.coords.latitude          + '\n' +
-				  'Longitude: '         + position.coords.longitude         + '\n' +
-				  'Altitude: '          + position.coords.altitude          + '\n' +
-				  'Accuracy: '          + position.coords.accuracy          + '\n' +
-				  'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-				  'Heading: '           + position.coords.heading           + '\n' +
-				  'Speed: '             + position.coords.speed             + '\n' +
-				  'Timestamp: '         + position.timestamp                + '\n');
-		};
 
-		// onError Callback receives a PositionError object
-		//
-		function onError(error) {
-			alert('code: '    + error.code    + '\n' +
-				  'message: ' + error.message + '\n');
-		}
-
-		navigator.geolocation.getCurrentPosition(onSuccess, onError,{ timeout: 31000, enableHighAccuracy: true, maximumAge: 90000 });
         console.log('Received Event: ' + id);
     }
 };

@@ -1,246 +1,185 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+<!--[if lt IE 7]>      <html class="no-js sidebar-large lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js sidebar-large lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js sidebar-large lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js sidebar-large"> <!--<![endif]-->
 
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
+<head>
+    <!-- BEGIN META SECTION -->
+    <meta charset="utf-8">
+    <title>Pixit - Responsive Boostrap3 Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="description" />
+    <meta content="themes-lab" name="author" />
+    <!-- END META SECTION -->
+    <!-- BEGIN MANDATORY STYLE -->
+    <link href="assets/css/icons/fontawesome/font-awesome.css" rel="stylesheet">
+    <link href="assets/css/icons/flaticons/flaticon.css" rel="stylesheet">
+    <link href="assets/plugins/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <!-- END  MANDATORY STYLE -->
+    <script src="assets/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+</head>
 
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Bakkaldan User</title>
-
-
-	    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-	    <script>
-			function initialize() {
-			  var myLatlng = new google.maps.LatLng(40.9873838,29.0487018);
-			  var mapOptions = {
-			    zoom: 16,
-			    center: myLatlng
-			  }
-			  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-			  var marker = new google.maps.Marker({
-			      position: myLatlng,
-			      map: map,
-			      title: 'Hello World!'
-			  });
-			}
-
-			google.maps.event.addDomListener(window, 'load', initialize);
-
-	    </script>
-
-    </head>
-    <body>
-
-        <div id="appHeader">
-	        <div>
-	        	<img id="appHeaderLogo" src="img/headerLogo.png">
-	        </div>
-	        <div id="appHeaderTitle" >
-	        	<img src="img/headerTitle.png" style="width:220px">
-	        </div>
+<body>
+    <!-- BEGIN PRELOADER -->
+    <section class="preloader">
+        <div id="loading-animation">
+            <ul class="spinner">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
         </div>
-
-        <div class="app" class="mADivs" style="display:none" >
-            <h1>Bakkaldan User</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+    </section>
+    <!-- END PRELOADER -->
+    <!-- BEGIN TOP NAVBAR-->
+    <div class="navbar navbar-fixed-top" role="navigation" data-0="line-height:85px; height:85px; background-color:rgba(43,46,51,0.3);" data-300="line-height:60px; height:60px; background-color:rgba(43,46,51,1);">
+        <div class="container">
+            <div class="navbar-header" style="background-color:#76ab33">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span><img src="assets/img/headerLogo.png" height="40px" style="margin-top:5px"></span>
+                </button>
+                <h1>
+                    <a class="navbar-brand" href="index.html" data-0="line-height:80px" data-300="line-height:58px">
+                        <img src="assets/img/logo.png" data-0="line-height:80px" data-300="line-height:58px" alt="logo" width="120" height="29">
+                    </a>
+                </h1>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:7px;">
+                    <li><a>AD/SOYAD : FIRAT YUKSEK</a></li>
+                    <li> </li>
+                    <li><a>TELEFON : 5326546546</a></li>
+                    <li> </li>
+                    <li class="active" style="float:right"><a href="#">Sign Out</a></li>
+                </ul>
             </div>
         </div>
+    </div>
+    <!-- END TOP NAVBAR-->
+    <section class="section-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
 
-        <div id="appLogin"  class="mADivs" style="display:block">
-        	<h1>İste, Gelsin</h1>
-        	<p>
-        		Birşey mi lazım ? 
-				<br>
-        		E-Postan ve şifrenle gir, bakkaldan sana gelsin .
-        	</p>
-        	<form>
-        		<input id="email"  name="email" type="text"  placeholder="E-Posta Adresi" >
-        		<input id="password"  name="password" type="password" placeholder="Şifre">
-        		<button type="button" onclick='$(".mADivs").hide();$("#appAddress").fadeIn();' > GİRİŞ YAP  </button>
-        	</form>
-        	<p style="cursor:pointer" onclick='$(".mADivs").hide();$("#appForgotPW").fadeIn();'>
-        		Şifremi Unuttum
-        	</p>
+                    <div class="align-center">
+                        <i class="glyph-icon flaticon-small52 fa-5x m-b-20"></i>
+                        <h1 class="slogan">Contact Us</h1>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div id="appForgotPW" class="mADivs" style="display:none">
-        	<h1>Şifrenizi mi unuttunuz ?</h1>
-        	<p>
-        		E-posta adresinizi girin, şifreniz gelsin
-        	</p>
-        	<form>
-        		<input id="forgotPW"  name="email" type="text"  placeholder="E-Posta Adresi" >
-
-        		<button type="button" style="margin-top:20px" onclick='$(".mADivs").hide();$("#appLogin").fadeIn();'> Şifremi Gönder  </button>
-        	</form>
+    </section>
+    <!-- BEGIN CONTACT SECTION -->
+    <section id="section-contact" class="section appear clearfix">
+        <div class="container">
+            <div class="row m-b-40">
+                <div class="col-md-offset-3 col-md-6">
+                    <div class="section-header">
+                        <p>Get in touch with us, write us an e-mail!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="cform">
+                        <div id="sendmessage">
+                            Your message has been sent. Thank you!
+                        </div>
+                        <form role="form" id="contact-form" class="contactForm" data-parsley-validate>
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-parsley-group="contact-field" data-parsley-minlength="4" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input class="form-control" name="email" id="email" placeholder="Your Email" data-parsley-group="contact-field" type="email" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" class="form-control" name="subject" id="subject" data-parsley-group="contact-field" placeholder="Subject" data-parsley-minlength="6" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" class="form-control" name="message" rows="5" data-parsley-range="[1, 200]" data-parsley-group="contact-field" data-msg="Please write something for us" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-blue pull-left">SEND MESSAGE</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div id="appAddress"  class="mADivs" style="display:none">
-	        <div class="appInnerHeader">
-
-	        	<div class="appInnerHeaderItem aAHISelected"  onclick='$(".mADivs").hide();$("#appAddress").fadeIn();'>
-	        		<img style="  width: 25px;" src="img/address.png">
-	        	</div>
-
-	        	<div class="appInnerHeaderItem"  onclick='$(".mADivs").hide();$("#appSiparisVer").fadeIn();'>
-	        		<img style="  width: 25px;" src="img/cart.png">
-	        	</div>
-
-	        	<div class="appInnerHeaderItem"  onclick='$(".mADivs").hide();$("#appSiparislerim").fadeIn();'>
-	        		<img style="  width: 25px;" src="img/orders.png">
-	        	</div>
-	        	<h1 style="margin-top:15px">ADRESLERİM</h1>
-	        	<div>
-	        		<p>Kayıtlı adresiniz yok</p>
-
-					<button type="button" > ADRES EKLE  </button>
-
-	        	</div>
-				<div>
-
-	        		<div id="map-canvas"></div>
-
-					<button type="button" onclick="initialize()" > KONUMUMU AL  </button>
-
-					<p>TARİF</p>
-
-					<textarea id="map-tarif" placeholder="Örneğin; Taksi durağını geçince ilk sağ sokak 2. apartman gibi... "></textarea>
-
-					<button type="button" style> ADRESİ KAYDET  </button>
-
-
-	        	</div>
-	        </div>
+    </section>
+    <!-- END CONTACT SECTION -->
+    <!-- BEGIN MAP -->
+    <section id="section-map" class="clearfix appear">
+        <div id="map"></div>
+    </section>
+    <!-- END MAP -->
+    <!-- BEGIN SUBSCRIBE SECTION -->
+    <section id="subscribe" class="subscribe-form">
+        <div class="container">
+            <div class="row">
+                <form>
+                    <div class="col-sm-8">
+                        <input type="text" placeholder="Enter your e-mail" spellcheck="false">
+                    </div>
+                    <div class="col-sm-4">
+                        <button class="btn btn-large btn-blue" type="submit">
+                            Subscribe now
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
-
-        <div id="appSiparisVer" class="mADivs" style="display:none">
-	        <div class="appInnerHeader">
-
-	        	<div class="appInnerHeaderItem "  onclick='$(".mADivs").hide();$("#appAddress").fadeIn();'>
-	        		<img style="  width: 25px;" src="img/address.png">
-	        	</div>
-
-	        	<div class="appInnerHeaderItem aAHISelected"  onclick='$(".mADivs").hide();$("#appSiparisVer").fadeIn();'>
-	        		<img style="  width: 25px;" src="img/cart.png">
-	        	</div>
-
-	        	<div class="appInnerHeaderItem"  onclick='$(".mADivs").hide();$("#appSiparislerim").fadeIn();'>
-	        		<img style="  width: 25px;" src="img/orders.png">
-	        	</div>
-
-		        <h1  style="margin-top:15px">DÜKKAN SEÇ</h1>
-
-		        <div>
-		        	<input id="telefon"  name="password" type="password" placeholder="Telefon Numarası" style="  width: 100%; text-align: left;margin: 10px 0px">
-					<br>
-		        	<textarea id="mySiparis" placeholder="Örneğin; 2 ekmek 1 gazete .." style="  width: 100%;  height: 100px;  text-align: left; margin: 10px 0px"></textarea>
-		        </div>
-
-		        <div>
-			        <div> DÜKKAN 1</div>
-			        <div> DÜKKAN 2</div>
-			        <div> DÜKKAN 3</div>
-			        <div> DÜKKAN 4</div>
-			        <div> DÜKKAN 5</div>
-		        </div>
-
-		        <button type="button" style="margin-top:15px"> Sipariş Ver  </button>
-	        </div>
+    </section>
+    <!-- END SUBSCRIBE SECTION -->
+    <!-- BEGIN FOOTER -->
+    <section id="footer" class="section footer">
+        <div class="container">
+            <div class="row animated opacity m-b-20" data-andown="fadeIn" data-animation="animation">
+                <div class="col-sm-12 align-center">
+                    <ul class="social-network social-circle">
+                        <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a>
+                        </li>
+                        <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a>
+                        </li>
+                        <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row align-center copyright">
+                <div class="col-sm-12">
+                    <p>Copyright &copy; 2014 Pixit</p>
+                </div>
+            </div>
         </div>
+    </section>
+    <a href="#header" class="scrollup"><i class="fa fa-chevron-up"></i></a> 
+    <!-- END FOOTER -->
+    <!-- BEGIN MANDATORY SCRIPTS -->
+    <script src="assets/plugins/jquery-1.11.js"></script>
+    <script src="assets/plugins/bootstrap.min.js"></script>
+    <script src="assets/plugins/owl-carousel/owl.carousel.min.js"></script>
+    <script src="assets/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+    <script src="assets/plugins/skrollr/skrollr.min.js"></script>
+    <script src="assets/plugins/jquery-scrollto/jquery.scrollTo-1.4.3.1-min.js"></script>
+    <script src="assets/plugins/jquery-appear/jquery.appear.js"></script>
+    <!-- END MANDATORY SCRIPTS -->
+    <!-- BEGIN PAGE PLUGIN SCRIPTS -->
+    <script src="assets/plugins/parsley/parsley.js"></script>
+    <script src="//maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="assets/plugins/gmaps/gmaps.js"></script>
+    <!-- END PAGE PLUGIN SCRIPTS -->
+    <script src="assets/js/main.js"></script>
+</body>
 
-        <div id="appSiparislerim"  class="mADivs" style="display:none">
-	        <div class="appInnerHeader">
-
-	        	<div class="appInnerHeaderItem "  onclick='$(".mADivs").hide();$("#appAddress").fadeIn();'>
-	        		<img style="  width: 25px;" src="img/address.png">
-	        	</div>
-
-	        	<div class="appInnerHeaderItem "  onclick='$(".mADivs").hide();$("#appSiparisVer").fadeIn();'>
-	        		<img style="  width: 25px;" src="img/cart.png">
-	        	</div>
-
-	        	<div class="appInnerHeaderItem aAHISelected"  onclick='$(".mADivs").hide();$("#appSiparislerim").fadeIn();'>
-	        		<img style="  width: 25px;" src="img/orders.png">
-	        	</div>
-
-		        <h1  style="margin-top:15px">SİPARİŞLERİM</h1>
-
-	        	<div id="appEskiSiparis" >
-		        	<div id="siparisID123123" style="margin-top:15px">
-			        	<div>
-			        		<div style="display:inline-block;text-align:left;width:57%">EV ADRESIM</div>
-			        		<div style="display:inline-block;text-align:right;width:20%">15:15</div>
-			        		<div style="display:inline-block;text-align:right;width:20%">12/12/12</div>
-			        	</div>
-			        	<div style="text-align:left">
-			        		2 Ekmek, 1 kilo domates
-			        	</div>
-			       	</div>
-
-		        	<div id="siparisID123122" style="margin-top:15px">
-			        	<div>
-			        		<div style="display:inline-block;text-align:left;width:57%">EV ADRESIM</div>
-			        		<div style="display:inline-block;text-align:right;width:20%">15:15</div>
-			        		<div style="display:inline-block;text-align:right;width:20%">12/12/12</div>
-			        	</div>
-			        	<div style="text-align:left">
-			        		2 Ekmek, 1 kilo domates
-			        	</div>
-			       	</div>
-
-		        	<div id="siparisID123121" style="margin-top:15px">
-			        	<div>
-			        		<div style="display:inline-block;text-align:left;width:57%">EV ADRESIM</div>
-			        		<div style="display:inline-block;text-align:right;width:20%">15:15</div>
-			        		<div style="display:inline-block;text-align:right;width:20%">12/12/12</div>
-			        	</div>
-			        	<div style="text-align:left">
-			        		2 Ekmek, 1 kilo domates
-			        	</div>
-			       	</div>
-
-
-	        	</div>
-
-
-	        </div>
-
-        </div>
-
-        <!-- SCRIPTS -->
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-
-
-
-    </body>
 </html>
