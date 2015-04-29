@@ -149,17 +149,17 @@
                                 <label for="password">Şifren</label>
                                 <input type="password" class="form-control" name="password" id="password" data-parsley-group="contact-field" placeholder="Şifren" data-parsley-minlength="6" required />
                             </div>
-                            <button id="appLoginButton" type="submit" class="btn btn-blue pull-left" onclick='$(".loginSections").delay(1500).toggle(0); $(".inAppSection").delay(2500).fadeToggle(0)'>KAYDOL VE GİRİŞ YAP</button>
+                            <button id="appLoginButton" type="submit" class="btn btn-blue" style="width:100%" onclick='$(".loginSections").delay(1500).toggle(0); $(".inAppSection").delay(2500).fadeToggle(0)'>KAYDOL VE GİRİŞ YAP</button>
                         </form>
                     </div>
                 </div>
             </div>
-            <div id="isZaten" class="row" style="margin-top:25px;margin-bottom:25px ">
+            <div id="isZaten" class="row" style="margin-top:25px;margin-bottom:25px;text-align:center ">
                 <div class="col-md-8 col-md-offset-2">
 					<a href="javascript:void(0)" onclick='$("#appLoginButton").html("GİRİŞ YAP");$("#isZaten").toggle();$("#notZaten").toggle();'>Zaten Üyeyim</a>
                 </div>
             </div>
-            <div id="notZaten" class="row" style="margin-top:25px;margin-bottom:25px;display:none">
+            <div id="notZaten" class="row" style="margin-top:25px;margin-bottom:25px;text-align:center;display:none">
 	            <div class="col-md-8 col-md-offset-2">
             		<a href="javascript:void(0)" onclick='$("#appLoginButton").html("KAYDOL VE GİRİŞ YAP");$("#isZaten").toggle();$("#notZaten").toggle();'>Üye olmak istiyorum</a> - <a href="javascript:void(0)" onclick='$("#appLoginView").toggle();$("#forgotPasswordView").fadeToggle();'>Şifremi Unuttum</a> 
 	            </div>
@@ -184,12 +184,12 @@
                                 <label for="email">E-posta Adresin</label>
                                 <input class="form-control" name="email" id="email" placeholder="Eposta Adresin" data-parsley-group="contact-field" type="email" required />
                             </div>
-                            <button id="appLoginButton" type="submit" class="btn btn-blue pull-left">Şifremi Unuttum</button>
+                            <button id="appLoginButton" type="submit" class="btn btn-blue" style="width:100%" >Şifremi Unuttum</button>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="row" style="margin-top:25px;margin-bottom:25px;">
+            <div class="row" style="margin-top:25px;margin-bottom:25px;text-align:center">
                 <div class="col-md-8 col-md-offset-2">
 					<a href="javascript:void(0)" onclick='$("#forgotPasswordView").toggle();$("#appLoginView").fadeToggle();'>Yok yok unutmadım</a>
                 </div>
