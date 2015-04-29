@@ -4,10 +4,38 @@
 <!--[if IE 8]>         <html class="no-js sidebar-large lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js sidebar-large"> <!--<![endif]-->
 
+<!--
+                        <form role="form" id="contact-form" class="contactForm" data-parsley-validate>
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-parsley-group="contact-field" data-parsley-minlength="4" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input class="form-control" name="email" id="email" placeholder="Your Email" data-parsley-group="contact-field" type="email" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" class="form-control" name="subject" id="subject" data-parsley-group="contact-field" placeholder="Subject" data-parsley-minlength="6" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" class="form-control" name="message" rows="5" data-parsley-range="[1, 200]" data-parsley-group="contact-field" data-msg="Please write something for us" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-blue pull-left">SEND</button>
+                        </form>
+
+-->
+    <!-- BEGIN MAP
+    <section id="section-map" class="clearfix appear">
+        <div id="map"></div>
+    </section>
+    END MAP -->
+
 <head>
     <!-- BEGIN META SECTION -->
     <meta charset="utf-8">
-    <title>Pixit - Responsive Boostrap3 Admin</title>
+    <title>BAKKALDAN</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta content="" name="description" />
     <meta content="themes-lab" name="author" />
@@ -20,6 +48,29 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <!-- END  MANDATORY STYLE -->
     <script src="assets/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    
+ 	    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+	    <script>
+			function initialize() {
+			  var myLatlng = new google.maps.LatLng(40.9873838,29.0487018);
+			  var mapOptions = {
+			    zoom: 16,
+			    center: myLatlng
+			  }
+			  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+			  var marker = new google.maps.Marker({
+			      position: myLatlng,
+			      map: map,
+			      title: 'Hello World!'
+			  });
+			}
+
+			google.maps.event.addDomListener(window, 'load', initialize);
+
+	    </script>
+ 
+    
 </head>
 
 <body>
@@ -60,26 +111,26 @@
         </div>
     </div>
     <!-- END TOP NAVBAR-->
-    <section class="section-top">
+    <!-- BEGIN LOGIN SECTIONS -->
+    <section class="loginSections" style="margin-top: 150px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
 
                     <div class="align-center">
-                        <i class="glyph-icon flaticon-small52 fa-5x m-b-20"></i>
-                        <h1 class="slogan">Contact Us</h1>
+                        <img src="assets/img/mainLogo.png"><br>
+                        <h1 class="slogan">BAKKALDAN EVİNE</h1>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- BEGIN CONTACT SECTION -->
-    <section id="section-contact" class="section appear clearfix">
-        <div class="container">
+	<section class="loginSections" id="section-contact" class="section appear clearfix">
+        <div id="appLoginView" class="container" style="display:block">
             <div class="row m-b-40">
                 <div class="col-md-offset-3 col-md-6">
                     <div class="section-header">
-                        <p>Get in touch with us, write us an e-mail!</p>
+                        <p>Sen gitme, siparişin sana gelsin. </p>
                     </div>
                 </div>
             </div>
@@ -87,58 +138,227 @@
                 <div class="col-md-8 col-md-offset-2">
                     <div class="cform">
                         <div id="sendmessage">
-                            Your message has been sent. Thank you!
+                           Bakkaldan'a hoşgeldin ! <br> Hemen adresini girip siparişini verebilirsin.
                         </div>
-                        <form role="form" id="contact-form" class="contactForm" data-parsley-validate>
+                        <form role="form" id="signup-form" class="contactForm" data-parsley-validate>
                             <div class="form-group">
-                                <label for="name">Your Name</label>
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-parsley-group="contact-field" data-parsley-minlength="4" required />
+                                <label for="email">Eposta Adresin</label>
+                                <input class="form-control" name="email" id="email" placeholder="Eposta Adresin" data-parsley-group="contact-field" type="email" required />
                             </div>
                             <div class="form-group">
-                                <label for="email">Your Email</label>
-                                <input class="form-control" name="email" id="email" placeholder="Your Email" data-parsley-group="contact-field" type="email" required />
+                                <label for="password">Şifren</label>
+                                <input type="password" class="form-control" name="password" id="password" data-parsley-group="contact-field" placeholder="Şifren" data-parsley-minlength="6" required />
                             </div>
-                            <div class="form-group">
-                                <label for="subject">Subject</label>
-                                <input type="text" class="form-control" name="subject" id="subject" data-parsley-group="contact-field" placeholder="Subject" data-parsley-minlength="6" required />
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" class="form-control" name="message" rows="5" data-parsley-range="[1, 200]" data-parsley-group="contact-field" data-msg="Please write something for us" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-blue pull-left">SEND MESSAGE</button>
+                            <button id="appLoginButton" type="submit" class="btn btn-blue pull-left" onclick='$(".loginSections").delay(1500).toggle(0); $(".inAppSection").delay(2500).fadeToggle(0)'>KAYDOL VE GİRİŞ YAP</button>
                         </form>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- END CONTACT SECTION -->
-    <!-- BEGIN MAP -->
-    <section id="section-map" class="clearfix appear">
-        <div id="map"></div>
-    </section>
-    <!-- END MAP -->
-    <!-- BEGIN SUBSCRIBE SECTION -->
-    <section id="subscribe" class="subscribe-form">
-        <div class="container">
-            <div class="row">
-                <form>
-                    <div class="col-sm-8">
-                        <input type="text" placeholder="Enter your e-mail" spellcheck="false">
-                    </div>
-                    <div class="col-sm-4">
-                        <button class="btn btn-large btn-blue" type="submit">
-                            Subscribe now
-                        </button>
-                    </div>
-                </form>
+            <div id="isZaten" class="row" style="margin-top:25px;margin-bottom:25px ">
+                <div class="col-md-8 col-md-offset-2">
+					<a href="javascript:void(0)" onclick='$("#appLoginButton").html("GİRİŞ YAP");$("#isZaten").toggle();$("#notZaten").toggle();'>Zaten Üyeyim</a>
+                </div>
+            </div>
+            <div id="notZaten" class="row" style="margin-top:25px;margin-bottom:25px;display:none">
+	            <div class="col-md-8 col-md-offset-2">
+            		<a href="javascript:void(0)" onclick='$("#appLoginButton").html("KAYDOL VE GİRİŞ YAP");$("#isZaten").toggle();$("#notZaten").toggle();'>Üye olmak istiyorum</a> - <a href="javascript:void(0)" onclick='$("#appLoginView").toggle();$("#forgotPasswordView").fadeToggle();'>Şifremi Unuttum</a> 
+	            </div>
             </div>
         </div>
+        <div id="forgotPasswordView" class="container" style="display:none">
+            <div class="row m-b-40">
+                <div class="col-md-offset-3 col-md-6">
+                    <div class="section-header">
+                        <p>Şifreni mi unuttun ? E-posta adresini gir, gönderelim. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="cform">
+                        <div id="sendmessage">
+                           Şifren e-posta adresine gönderildi bile .
+                        </div>
+                        <form role="form" id="contact-form" class="contactForm" data-parsley-validate>
+                            <div class="form-group">
+                                <label for="email">E-posta Adresin</label>
+                                <input class="form-control" name="email" id="email" placeholder="Eposta Adresin" data-parsley-group="contact-field" type="email" required />
+                            </div>
+                            <button id="appLoginButton" type="submit" class="btn btn-blue pull-left">Şifremi Unuttum</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:25px;margin-bottom:25px;">
+                <div class="col-md-8 col-md-offset-2">
+					<a href="javascript:void(0)" onclick='$("#forgotPasswordView").toggle();$("#appLoginView").fadeToggle();'>Yok yok unutmadım</a>
+                </div>
+            </div>
+
+        </div>
     </section>
-    <!-- END SUBSCRIBE SECTION -->
+    <!-- END LOGIN SECTIONS -->
+    <!-- BEGIN INAPP SECTIONS -->
+
+
+
+    <section class="inAppSection" style="margin-top: 110px;display:none">
+
+ <!-- -->  
+            <div id="appAddress" class="inAppTabs container" >
+		        <div id="appAddressHeader" class="row" style="padding:0px 2%;">
+		            <div onclick='' class="col-md-4" style="display:inline-block;width:32%;text-align:center;padding-bottom:5px;cursor:pointer;border-bottom-color:rgb(51, 51, 51);border-bottom-width:2px;  border-bottom-style:solid;">
+							<img src="assets/img/address.png" style="width: 40px;">
+		            </div>
+		            <div onclick='$(".inAppTabs").hide();$("#appShop").fadeIn();' class="col-md-4" style="display:inline-block;width:32%;text-align:center;padding-bottom:5px;cursor:pointer;">
+							<img src="assets/img/cart.png" style="width: 40px;">
+		            </div>
+		            <div onclick='$(".inAppTabs").hide();$("#appOrders").fadeIn();' class="col-md-4" style="display:inline-block;width:32%;text-align:center;padding-bottom:5px;cursor:pointer;">
+							<img src="assets/img/orders.png" style="width: 40px;">
+		            </div>
+		        </div>
+				<div id="appAddressBody" class="row" style="padding:0px 10%;margin-bottom:25px;">
+							<h1 style="margin: 10px 0px">Adreslerin</h1>
+					        <div id="noMapText" style="margin: 10px 0px"> Kayıtlı adresin yok, hemen  adres ekle</div>
+					        <div id="addedAddressList" style="margin-bottom:10px">
+								
+								<form>
+									<input type="radio" name="addressPicker" id="Adresim1" value="Adresim1" checked>
+									<label style="  margin-bottom: 7px;  margin-top: 7px;" for="Adresim1"> Adresim1</label>
+									<button class="btn" style="display:inline-block;position:relative;float:right;background-color:#00A2D9;color:#fff;height:23px;padding:0px 3px;margin-top:8px;">Düzenle</button>
+									<br>
+									<input type="radio" name="addressPicker" id="Adresim2" value="Adresim2">
+									<label style="  margin-bottom: 7px;  margin-top: 7px;" for="Adresim2"> Adresim2</label>
+									<button class="btn" style="display:inline-block;position:relative;float:right;background-color:#00A2D9;color:#fff;height:23px;padding:0px 3px;margin-top:8px;">Düzenle</button>
+								</form> 
+
+						     </div>
+						     <div id="addNewAddress" >
+								 <div id="map-canvas" style="width:100%;height:255px;"></div>
+								 <button onclick="initialize()" class="btn" style="  margin-top: -60px;  z-index: 10;  position: relative;  width: 100%;  background-color: darkorange;  color: #fff;">BENİ BUL</button>
+								 <div id="noGpsText" style="margin-bottom:20px" > Adres kaydı için GPS'i açıp tekrar dene </div>
+							
+								<form role="form" id="contact-form" class="contactForm" data-parsley-validate>
+		                            <div class="form-group">
+		                                <label for="name">Başlık</label>
+		                                <input type="text" name="addressTitle" class="form-control" id="addressTitle" placeholder="Başlık" data-parsley-group="contact-field" data-parsley-minlength="3" required />
+		                            </div>
+		                            <div class="form-group">
+		                                <label for="message">Tarif</label>
+		                                <textarea id="addressDirection" class="form-control" name="addressDirection" rows="5" data-parsley-range="[20, 100]" data-parsley-group="contact-field" data-msg="lutfen tarif giriniz" placeholder="Örn: Benzinciden sonra sağdan ikinci sokak, HUZUR apartmanı daire 4 " required></textarea>
+		                            </div>
+		                            <button type="submit" class="btn btn-blue pull-left">KAYDET</button>
+		                        </form>
+							
+						     </div>
+					        
+				</div>
+            </div>
+ <!-- -->  
+             <div id="appShop" class="inAppTabs container" style="display:none">
+		        <div id="appShopHeader" class="row" style="padding:0px 2%;">
+		            <div onclick='$(".inAppTabs").hide();$("#appAddress").fadeIn();' class="col-md-4" style="display:inline-block;width:32%;text-align:center;padding-bottom:5px;cursor:pointer;">
+							<img src="assets/img/address.png" style="width: 40px;">
+		            </div>
+		            <div onclick='' class="col-md-4" style="display:inline-block;width:32%;text-align:center;padding-bottom:5px;cursor:pointer;border-bottom-color:rgb(51, 51, 51);border-bottom-width:2px;  border-bottom-style:solid;">
+							<img src="assets/img/cart.png" style="width: 40px;">
+		            </div>
+		            <div onclick='$(".inAppTabs").hide();$("#appOrders").fadeIn();' class="col-md-4" style="display:inline-block;width:32%;text-align:center;padding-bottom:5px;cursor:pointer;">
+							<img src="assets/img/orders.png" style="width: 40px;">
+		            </div>
+		        </div>
+				<div id="appShopBody" class="row" style="padding:0px 10%;margin-bottom:25px;">
+					shop
+				</div>
+            </div>  
+ <!-- -->    
+              <div id="appOrders" class="inAppTabs container" style="display:none">
+		        <div id="appOrdersHeader" class="row" style="padding:0px 2%;">
+		            <div onclick='$(".inAppTabs").hide();$("#appAddress").fadeIn();' class="col-md-4" style="display:inline-block;width:32%;text-align:center;padding-bottom:5px;cursor:pointer;">
+							<img src="assets/img/address.png" style="width: 40px;">
+		            </div>
+		            <div onclick='$(".inAppTabs").hide();$("#appShop").fadeIn();' class="col-md-4" style="display:inline-block;width:32%;text-align:center;padding-bottom:5px;cursor:pointer;">
+							<img src="assets/img/cart.png" style="width: 40px;">
+		            </div>
+		            <div onclick='' class="col-md-4" style="display:inline-block;width:32%;text-align:center;padding-bottom:5px;cursor:pointer;border-bottom-color:rgb(51, 51, 51);border-bottom-width:2px;  border-bottom-style:solid;">
+							<img src="assets/img/orders.png" style="width: 40px;">
+		            </div>
+		        </div>
+				<div id="appOrdersBody" class="row" style="padding:0px 10%;margin-bottom:25px">
+					<h1 style="margin: 10px 0px 20px 0px">Siparişlerin</h1>
+					<div id="appOrdersList" style="margin: 10px 0px"> 
+						
+						
+						<div id="appOrder01"  style="  padding: 10px 0px;  border-bottom-color: rgb(119, 119, 119);  border-bottom-style: solid;  border-bottom-width: 1px;">
+							<div id="appOrder01Cancel" style="display:inline-block">
+								<button class="btn" style="margin: -4px 5px 0px 0px;background-color:#D94200;color:#fff;height:22px;padding:0px 5px;"> X </button>
+							</div>
+							<div id="appOrder01Title"  style="display:inline-block" onclick='$(".appOrderDetails").hide();$("#appOrder01Details").delay(100).slideDown(400);'> 
+
+									<span id="appOrder01Store">Bizim Bakkal</span>  
+									<span id="appOrder01Time" style="font-size: 0.7em;"> 17:09, 12/12/2015</span> 
+									<span id="appOrder01Status">
+										<img style="width:14px;vertical-align:initial;" src="assets/img/check.png">
+									</span>
+ 
+								
+							</div>
+							<div id="appOrder01Details" class="appOrderDetails" style="font-size: 0.7em;display:none"> 
+								2 Ekmek, 1 Kola, 1 Paket Şeker
+							</div>
+						</div>
+						
+						
+						<div id="appOrder02"  style="  padding: 10px 0px;  border-bottom-color: rgb(119, 119, 119);  border-bottom-style: solid;  border-bottom-width: 1px;">
+							<div id="appOrder02Cancel" style="display:inline-block">
+
+							</div>
+							
+							<div id="appOrder02Title" style="display:inline-block" onclick='$(".appOrderDetails").hide();$("#appOrder02Details").delay(100).slideDown(400);'> 
+
+									<span id="appOrder02Store">Güzel Şarküteri</span>   
+									<span id="appOrder02Time" style="font-size: 0.7em;"> 17:09, 12/12/2015</span> 
+									<span id="appOrder02Status">
+										<img  style="width:14px;vertical-align:initial;"  src="assets/img/check.png">
+										<img  style="width:14px;vertical-align:initial;"  src="assets/img/check.png">
+									</span> 
+
+							</div>
+							<div id="appOrder02Details" class="appOrderDetails" style="font-size: 0.7em;display:none"> 
+								1 Gazete, 1 Ekmek, 1 kg Peynir, yarım kilo zeytin
+							</div>
+						</div>					
+					
+						<div id="appOrder03"  style="  padding: 10px 0px;  border-bottom-color: rgb(119, 119, 119);  border-bottom-style: solid;  border-bottom-width: 1px;">
+							<div id="appOrder03Cancel" style="display:inline-block">
+
+							</div>
+							<div id="appOrder03Title" style="display:inline-block" onclick='$(".appOrderDetails").hide();$("#appOrder03Details").delay(100).slideDown(400);'> 
+
+									<span id="appOrder03Store">Yan Kasap</span>   
+									<span id="appOrder03Time" style="font-size: 0.7em;"> 17:09, 12/12/2015</span> 
+									<span id="appOrder03Status">
+										<img  style="width:14px;vertical-align:initial;"  src="assets/img/check.png">
+										<img  style="width:14px;vertical-align:initial;"  src="assets/img/check.png">
+									</span> 
+
+							</div>
+							<div id="appOrder03Details" class="appOrderDetails" style="font-size: 0.7em;display:none"> 
+								1 kilo dana kıyma
+							</div>
+						</div>						
+					
+					</div>
+					
+				</div>
+            </div>
+ <!-- -->  
+  
+   
+    </section>
+    <!-- END INAPP SECTIONS -->   
     <!-- BEGIN FOOTER -->
-    <section id="footer" class="section footer">
+    <section id="footer" class="section footer" style="display:none">
         <div class="container">
             <div class="row animated opacity m-b-20" data-andown="fadeIn" data-animation="animation">
                 <div class="col-sm-12 align-center">
@@ -158,7 +378,7 @@
             </div>
             <div class="row align-center copyright">
                 <div class="col-sm-12">
-                    <p>Copyright &copy; 2014 Pixit</p>
+                    <p>Copyright &copy; SagClick</p>
                 </div>
             </div>
         </div>
@@ -176,8 +396,9 @@
     <!-- END MANDATORY SCRIPTS -->
     <!-- BEGIN PAGE PLUGIN SCRIPTS -->
     <script src="assets/plugins/parsley/parsley.js"></script>
-    <script src="//maps.google.com/maps/api/js?sensor=true"></script>
-    <script src="assets/plugins/gmaps/gmaps.js"></script>
+
+
+
     <!-- END PAGE PLUGIN SCRIPTS -->
     <script src="assets/js/main.js"></script>
 </body>
