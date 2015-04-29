@@ -223,6 +223,7 @@
 					        <div id="addedAddressList" style="margin-bottom:10px">
 								
 								<form>
+									<br>
 									<input type="radio" name="addressPicker" id="Adresim1" value="Adresim1" checked>
 									<label style="  margin-bottom: 7px;  margin-top: 7px;" for="Adresim1"> Adresim1</label>
 									<button class="btn" style="display:inline-block;position:relative;float:right;background-color:#D94200;color:#fff;height:23px;padding:0px 5px;margin-top:8px;margin-left:8px;"> X </button>
@@ -237,7 +238,10 @@
 								</form> 
 
 						     </div>
-						     <div id="addNewAddress" >
+						     
+						     <button type="submit" class="btn btn-blue " style="width: 100%;">YENİ ADRES EKLE</button>
+						     
+						     <div id="addNewAddress" style="margin-top:15px">
 								 <div id="map-canvas" style="width:100%;height:255px;"></div>
 								 <button onclick="initialize()" class="btn" style="  margin-top: -60px;  z-index: 10;  position: relative;  width: 100%;  background-color: darkorange;  color: #fff;">BENİ BUL</button>
 								 <div id="noGpsText" style="margin-bottom:20px" > Adres kaydı için GPS'i açıp tekrar dene </div>
@@ -249,9 +253,9 @@
 		                            </div>
 		                            <div class="form-group">
 		                                <label for="message">Tarif</label>
-		                                <textarea id="addressDirection" class="form-control" name="addressDirection" rows="5" data-parsley-range="[20, 100]" data-parsley-group="contact-field" data-msg="lutfen tarif giriniz" placeholder="Örn: Benzinciden sonra sağdan ikinci sokak, HUZUR Apt. D:col-md-6 col-md-offset-34 " required></textarea>
+		                                <textarea id="addressDirection" class="form-control" name="addressDirection" rows="5" data-parsley-range="[20, 100]" data-parsley-group="contact-field" data-msg="lutfen tarif giriniz" placeholder="Örn: Benzinciden sonra sağdan ikinci sokak, HUZUR Apt. D:4 " required></textarea>
 		                            </div>
-		                            <button type="submit" class="btn btn-blue pull-left">KAYDET</button>
+		                            <button type="submit" class="btn btn-blue " style="width:100%">KAYDET</button>
 		                        </form>
 							
 						     </div>
@@ -272,9 +276,84 @@
 		            </div>
 		        </div>
 				<div id="appShopBody" class="row" style="padding:0px 10%;margin-bottom:25px;">
-					shop
+					<h1 style="margin: 10px 0px 20px 0px">Söyle, Gelsin</h1>
+					<div style="margin: 10px 0px"> Siparişini ver, keyfine bak.</div>
+
+					<form role="form" id="siparis-form" class="contactForm" data-parsley-validate="" novalidate="">
+                        
+                        <div class="form-group" style="margin-bottom:0px">
+                            <label for="name">Ad-Soyad</label>
+                            <input type="text" name="nameSurname" class="form-control" id="nameSurname" placeholder="Ad, Soyad" data-parsley-group="contact-field" data-parsley-minlength="3" required="" data-parsley-id="8649">
+                        </div>
+                        
+                        <div class="form-group" style="margin-bottom:0px">
+                            <label for="name">Telefon</label>
+                            <input type="text" name="userTel" class="form-control" id="userTel" placeholder="(5XX) XXX XX XX" data-parsley-group="contact-field" data-parsley-minlength="10" required="" data-parsley-id="8649">
+                        </div>
+                        
+                        <div class="form-group" style="margin-bottom:0px">
+                            <label for="message">Sipariş</label>
+                            <textarea id="addressDirection" class="form-control" name="addressDirection" rows="5" data-parsley-range="[10, 200]" data-parsley-group="contact-field" data-msg="lutfen sipariş giriniz" placeholder="Örn: 2 Ekmek, 1 Kola, 1 paket Sabun" required="" data-parsley-id="7058"></textarea>
+                        </div>
+
+						<div style="margin: 10px 0px;font-size:14px" onclick='$("#storeSortDist").toggle();$("#storeSortAbc").toggle();'> 
+							<div style="display:inline-block">Listeleme Tipi : </div>
+							<span id="storeSortDist" style="float: right;">Yakından uzağa <img src=""> </span>
+							<span id="storeSortAbc" style="float: right;display:none">Alfabetik <img src=""> </span>
+						</div>
+						<div id="appShopStoreSelectList" >
+							<!-- Store Start -->
+								<input type="radio" name="storePicker" id="store1" value="store1" checked>
+								<label style="  margin-bottom: 7px;  margin-top: 7px;" for="store1"> 
+									<span>
+										<img src="assets/img/open.png" style="width:24px;margin-top:-10px;margin-left:3px;">
+									</span>
+									<div style="width: 115px;display: inline-block;vertical-align: top;">
+										Bizim Bakkal
+									</div>
+									<span style="text-align:right">
+										<img src="assets/img/payCash.png" style="width:24px;margin-top:-5px;margin-left:1px;">
+										<img src="assets/img/payCCard.png" style="width:24px;margin-top:-5px;margin-left:1px;">
+										<img src="assets/img/payTicket.png" style="width:24px;margin-top:-5px;margin-left:1px;">
+									</span>												 
+								</label>
+							<!-- Store End -->
+							<!-- Store Start -->
+								<input type="radio" name="storePicker" id="store2" value="store2">
+								<label style="  margin-bottom: 7px;  margin-top: 7px;" for="store2"> 
+									<span>
+										<img src="assets/img/closed.png" style="width:24px;margin-top:-10px;margin-left:3px;">
+									</span>
+									<div style="width: 115px;display: inline-block;vertical-align: top;">
+										Nisanoğlu Bkl.
+									</div>
+									<span style="text-align:right">
+										<img src="assets/img/payCash.png" style="width:24px;margin-top:-5px;margin-left:1px;">
+										<img src="assets/img/payCCard.png" style="width:24px;margin-top:-5px;margin-left:1px;">
+										<img src="assets/img/payTicket.png" style="width:24px;margin-top:-5px;margin-left:1px;">
+									</span>												 
+								</label>
+							<!-- Store End -->
+						</div>
+					
+						<button type="submit" class="btn btn-blue " style="width:100%">SİPARİŞ VER</button>
+					
+					</form> 
+				
+				
+				
+				
 				</div>
             </div>  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  <!-- -->    
               <div id="appOrders" class="inAppTabs container" style="display:none">
 		        <div id="appOrdersHeader" class="row" style="padding:0px 2%;">
@@ -290,6 +369,7 @@
 		        </div>
 				<div id="appOrdersBody" class="row" style="padding:0px 10%;margin-bottom:25px">
 					<h1 style="margin: 10px 0px 20px 0px">Siparişlerin</h1>
+					<div style="margin: 10px 0px"> Önceki siparişlerinin hepsi burada</div>
 					<div id="appOrdersList" style="margin: 10px 0px"> 
 						
 						
@@ -297,9 +377,9 @@
 							<div id="appOrder01Cancel" style="display:inline-block">
 								<button class="btn" style="margin: -4px 5px 0px 0px;background-color:#D94200;color:#fff;height:22px;padding:0px 5px;"> X </button>
 							</div>
-							<div id="appOrder01Title"  style="display:inline-block" onclick='$(".appOrderDetails").hide();$("#appOrder01Details").delay(100).slideDown(400);'> 
+							<div id="appOrder01Title"  style="display:inline-block" > 
 
-									<span id="appOrder01Store">Bizim Bakkal</span>  
+									<span id="appOrder01Store" style="font-weight:bold">Bizim Bakkal</span>  
 									<span id="appOrder01Time" style="font-size: 0.7em;"> 17:09, 12/12/2015</span> 
 									<span id="appOrder01Status">
 										<img style="width:14px;vertical-align:initial;" src="assets/img/check.png">
@@ -318,9 +398,9 @@
 
 							</div>
 							
-							<div id="appOrder02Title" style="display:inline-block" onclick='$(".appOrderDetails").hide();$("#appOrder02Details").delay(100).slideDown(400);'> 
+							<div id="appOrder02Title" style="display:inline-block" > 
 
-									<span id="appOrder02Store">Güzel Şarküteri</span>   
+									<span id="appOrder02Store" style="font-weight:bold">Güzel Şarküteri</span>   
 									<span id="appOrder02Time" style="font-size: 0.7em;"> 17:09, 12/12/2015</span> 
 									<span id="appOrder02Status">
 										<img  style="width:14px;vertical-align:initial;"  src="assets/img/check.png">
@@ -337,9 +417,9 @@
 							<div id="appOrder03Cancel" style="display:inline-block">
 
 							</div>
-							<div id="appOrder03Title" style="display:inline-block" onclick='$(".appOrderDetails").hide();$("#appOrder03Details").delay(100).slideDown(400);'> 
+							<div id="appOrder03Title" style="display:inline-block" > 
 
-									<span id="appOrder03Store">Yan Kasap</span>   
+									<span id="appOrder03Store" style="font-weight:bold">Yan Kasap</span>   
 									<span id="appOrder03Time" style="font-size: 0.7em;"> 17:09, 12/12/2015</span> 
 									<span id="appOrder03Status">
 										<img  style="width:14px;vertical-align:initial;"  src="assets/img/check.png">
