@@ -20,6 +20,7 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <!-- END  MANDATORY STYLE -->
     <script src="assets/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	<script src="js/index.js"></script>
     
  	    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 	    <script>
@@ -131,16 +132,16 @@
                         <div id="sendmessage">
                            Bakkaldan'a hoşgeldin ! <br> Hemen adresini girip siparişini verebilirsin.
                         </div>
-                        <form role="form" id="signup-form" class="contactForm" data-parsley-validate>
+                        <form role="form" id="signup-form" onsubmit="uyeKayit();return false;" class="contactForm" data-parsley-validate>
                             <div class="form-group" style=" margin-bottom: 10px;">
                                 <label for="email">Eposta Adresin</label>
-                                <input class="form-control" name="email" id="email" placeholder="Eposta Adresin" data-parsley-group="contact-field" type="email" required />
+                                <input class="form-control" name="email" id="regEmail" placeholder="Eposta Adresin" data-parsley-group="contact-field" type="email" required />
                             </div>
                             <div class="form-group"  style=" margin-bottom: 10px;">
                                 <label for="password">Şifren</label>
-                                <input type="password" class="form-control" name="password" id="password" data-parsley-group="contact-field" placeholder="Şifren" data-parsley-minlength="6" required />
+                                <input type="password" class="form-control" name="password" id="regPassword" data-parsley-group="contact-field" placeholder="Şifren" data-parsley-minlength="6" required />
                             </div>
-                            <button id="appLoginButton" type="submit" class="btn btn-blue" style="width:100%" onclick='$(".loginSections").delay(1500).toggle(0); $(".firstTimeSection").delay(2500).fadeToggle(0)'>KAYDOL VE GİRİŞ YAP</button>
+                            <button id="appLoginButton" type="submit" class="btn btn-blue" style="width:100%">KAYDOL VE GİRİŞ YAP</button>
                         </form>
                     </div>
                 </div>
