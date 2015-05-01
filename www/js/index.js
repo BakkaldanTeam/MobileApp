@@ -37,6 +37,7 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
+		/*
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
@@ -45,5 +46,36 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+		*/
+		
+		
     }
 };
+
+function uyeKayit(){
+
+	var email = document.getElementById("regEmail").value;
+	var password = document.getElementById("regPassword").value;
+
+	var postData = '{"aksiyon":"uyeKayit","data":{"memberType":"member","email":"'+email+'","password":"'+password+'"}}';
+
+	
+	$.post("http://www.sagclick.com/BAKKALDAN/com/bakkaldan/DEBUG/debugger.php", { bilgi: postData}).done(
+	function(data){
+		alert(data);
+		var sonuc = JSON.parse(data);
+		if(sonuc.response==true){
+			console.log("Trace 'sonuc.data': " + sonuc.data);
+			window.localStorage.setItem("email", email);
+			window.localStorage.setItem("password", password);
+			
+			alert(window.localStorage.getItem("password"));
+			$(".loginSections").delay(1500).toggle(0); 
+			$(".firstTimeSection").delay(2500).fadeToggle(0);
+		}
+		else{
+			alert("Bir hata oluştu, lütfen tekrar deneyiniz.");
+		}
+	}
+	);
+}
