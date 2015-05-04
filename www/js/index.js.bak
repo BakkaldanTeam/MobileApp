@@ -406,26 +406,21 @@ function YeniAdresEkleme(){
 }
 
 function YeniAdresKaydi(){
-	var title = $("#addressTitle").val();
-	var directions = $("#addressDirection").val();
-	if(GLat!==null && GLng!==null){
-		var postData = '{"aksiyon":"adresEkle","data":{"title":"'+title+'","directions":"'+directions+'","lat":"'+GLat+'","lng":"'+GLng+'"}}';
+	var postData = '{"aksiyon":"adresEkle","data":{"title":"'+title+'","directions":"'+directions+'","lat":"'+GLat+'","lng":"'+GLng+'"}}';
 
-		
-		$.post("http://www.sagclick.com/BAKKALDAN/com/bakkaldan/DEBUG/debugger.php", { bilgi: postData}).done(
-		function(data){
-			alert(data);
-			var sonuc = JSON.parse(data);
-			if(sonuc.response==true){
-				AdreslerimiGetir();
-				$("#addNewAddress").hide();
-				$("#addedAddressList").fadeIn();
-			}
-			else{
-				alert("Bir þeyler yanlýþ.");
-			}
+	
+	$.post("http://www.sagclick.com/BAKKALDAN/com/bakkaldan/DEBUG/debugger.php", { bilgi: postData}).done(
+	function(data){
+		alert(data);
+		var sonuc = JSON.parse(data);
+		if(sonuc.response==true){
+			AdreslerimiGetir();
 		}
-		);
-		
+		else{
+			alert("Yetki sende deðil, boþuna deneme.");
+		}
 	}
+	);
+	$("#addNewAddress").hide();
+	$("#addedAddressList").fadeIn();
 }

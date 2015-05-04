@@ -291,7 +291,7 @@
 											<textarea id="addressDirection" class="form-control" name="addressDirection" rows="5" data-parsley-range="[20, 100]" data-parsley-group="contact-field" data-msg="lutfen tarif giriniz" placeholder="Örn: Benzinciden sonra sağdan ikinci sokak, HUZUR Apt. D:4 " required></textarea>
 										</div>
 										<button type="submit" class="btn" style="width:48%;width: 48%;background-color:rgb(189, 53, 53);color:white;" onclick='$("#addNewAddress").hide();$("#addedAddressList").fadeIn();'>VAZGEÇ</button>
-										<button type="submit" class="btn btn-blue " style="width:48%" onclick='YeniAdresKaydi();return false;' >KAYDET</button>
+										<button type="submit" class="btn btn-blue " style="width:48%" onclick='$("#addNewAddress").hide();$("#addedAddressList").fadeIn();'>KAYDET</button>
 									</form>
 								</div>
 						     </div>
