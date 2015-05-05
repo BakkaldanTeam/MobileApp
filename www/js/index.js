@@ -58,7 +58,9 @@ var app = {
 			
 			uyeKayit(email,password);
 		}
-		
+		else{
+			$(".loginSections").show();
+		}
 		
     }
 };
@@ -73,17 +75,19 @@ function uyeKayit(email,password){
 	
 	$.post("http://www.sagclick.com/BAKKALDAN/com/bakkaldan/DEBUG/debugger.php", { bilgi: postData}).done(
 	function(data){
-		alert(data);
+	
 		var sonuc = JSON.parse(data);
 		if(sonuc.response==true){
-			console.log("Trace 'sonuc.data': " + sonuc.data);
+			$(".loginSections").hide();
 			window.localStorage.setItem("email", email);
 			window.localStorage.setItem("password", password);
 			profilBilgilerim();
 			
 		}
 		else{
-			alert("Bir hata oluþtu, lütfen tekrar deneyiniz.");
+			window.localStorage.removeItem("email");
+			window.localStorage.removeItem("password");
+			$(".loginSections").show();
 		}
 	}
 	);
@@ -100,13 +104,13 @@ function sifremiUnuttum(){
 	
 	$.post("http://www.sagclick.com/BAKKALDAN/com/bakkaldan/DEBUG/debugger.php", { bilgi: postData}).done(
 	function(data){
-		alert(data);
+	
 		var sonuc = JSON.parse(data);
 		if(sonuc.response==true){
-			alert(sonuc.response);
+			alert("Åžifreni e-posta adresine gÃ¶nderdik.");
 		}
 		else{
-			alert("Bir hata oluþtu, lütfen tekrar deneyiniz.");
+			alert("Bir hata oluÅŸtu, lÃ¼tfen tekrar dene.");
 		}
 	}
 	);
@@ -119,7 +123,7 @@ function cikisYap(){
 	
 	$.post("http://www.sagclick.com/BAKKALDAN/com/bakkaldan/DEBUG/debugger.php", { bilgi: postData}).done(
 	function(data){
-		alert(data);
+		
 		var sonuc = JSON.parse(data);
 		if(sonuc.response==true){
 			window.localStorage.removeItem("email");
@@ -127,7 +131,8 @@ function cikisYap(){
 			document.location = "index.html";
 		}
 		else{
-			alert("Bir hata oluþtu, lütfen tekrar deneyiniz.");
+			//	alert("Bir hata oluÅŸtu, lÃ¼tfen tekrar dene.");
+
 		}
 	}
 	);
@@ -140,37 +145,42 @@ function profilBilgilerim(){
 	
 	$.post("http://www.sagclick.com/BAKKALDAN/com/bakkaldan/DEBUG/debugger.php", { bilgi: postData}).done(
 	function(data){
-		alert(data);
+		
 		var sonuc = JSON.parse(data);
 		if(sonuc.response==true){
 			$("#profilAdSoyad").html(sonuc.data.firstName+" "+sonuc.data.lastName);
 			$("#profilTelefon").html(sonuc.data.phone);
 			if(sonuc.data.state=="beklemede"){
-				$(".loginSections").delay(1500).toggle(0); 
-				$(".firstTimeSection").delay(2500).fadeToggle(0);
+				
+				$("#noGpsTextFirstTimer").css("display","block");
+				$(".firstTimeSection").fadeToggle(0);
+			
 			}
-			else{
-				$(".loginSections").delay(1500).toggle(0); 
-				$(".inAppSection").delay(2500).fadeToggle(0);
-				bakkallariGetir();
+			else if(sonuc.data.state=="aktif"){
+				DefaultAdresiGetir();
+				BakkallariGetir();
+				$(".inAppSection").fadeToggle(0);
+				
+				
 			}
+			else $(".loginSections").show();
 		}
 		else{
-			alert("Bir hata oluþtu, lütfen tekrar deneyiniz.");
+			$(".loginSections").show();
 		}
 	}
 	);
 }
 
-function bakkallariGetir(){
+function BakkallariGetir(){
 	
 	var postData = '{"aksiyon":"bakkallariGetirApp","data":{"":""}}';
 
 	
 	$.post("http://www.sagclick.com/BAKKALDAN/com/bakkaldan/DEBUG/debugger.php", { bilgi: postData}).done(
 	function(data){
-		alert(data);
-		$("#appShopStoreSelectList").html('Dükkan verilerini hazýrlýyoruz, az sabýr.');
+		
+		$("#appShopStoreSelectList").html('DÃ¼kkanlar yÃ¼kleniyor.');
 		var sonuc = JSON.parse(data);
 		if(sonuc.response==true){
 			var checkStr = "";
@@ -182,11 +192,11 @@ function bakkallariGetir(){
 				if(sonuc.data[i].ticket=='var') odemeSecenekleriStr = odemeSecenekleriStr + '<img src="assets/img/payTicket.png" style="width:24px;margin-top:-5px;margin-left:1px;">';							
 											
 				checkStr = (i==0) ? "checked" : "";
-				$("#appShopStoreSelectList").append('<input type="radio" name="storePicker" value="'+sonuc.data[i].dukkanId+'" '+checkStr+'><label style="  margin-bottom: 7px;  margin-top: 7px;" for="store1"> <span><img src="assets/img/open.png" style="width:24px;margin-top:-10px;margin-left:3px;"></span><div style="width: 115px;display: inline-block;vertical-align: top;">'+sonuc.data[i].dukkanBaslik+'	</div>	<span style="text-align:right">	<img src="assets/img/payCash.png" style="width:24px;margin-top:-5px;margin-left:1px;">'+odemeSecenekleriStr+'	</span>		</label>	<br>');
+				$("#appShopStoreSelectList").append('<input type="radio" name="storePicker" value="'+sonuc.data[i].dukkanId+'" '+checkStr+'><label style="  margin-bottom: 7px;  margin-top: 7px;" for="store1"> <span><img src="assets/img/open.png" style="width:24px;margin-top:-10px;margin-left:3px;margin-right:3px"></span><div style="width: 115px;display: inline-block;vertical-align: top;text-transform:capitalize">'+sonuc.data[i].dukkanBaslik+'	</div>	<span style="text-align:right">	<img src="assets/img/payCash.png" style="width:24px;margin-top:-5px;margin-left:1px;">'+odemeSecenekleriStr+'	</span>		</label>	<br>');
 			}
 		}
 		else{
-			alert("Bir hata oluþtu, lütfen tekrar deneyiniz.");
+			alert("Bir hata oluÅŸtu, lÃ¼tfen tekrar dene.");
 		}
 	}
 	);
@@ -206,10 +216,9 @@ function siparisVer(){
 		var postData = '{"aksiyon":"siparisVer","data":{"message":"'+message+'","dukkanId":"'+selectedShop+'"}}';
 		$.post("http://www.sagclick.com/BAKKALDAN/com/bakkaldan/DEBUG/debugger.php", { bilgi: postData}).done(
 			function(data){
-				alert(data);
+		
 				var sonuc = JSON.parse(data);
 				if(sonuc.response===true){
-					alert("Sipariþ tamamdýr.");
 					$("#userNewOrder").val('');
 					SiparislerimiGetir();
 					$(".inAppTabs").hide();
@@ -217,13 +226,13 @@ function siparisVer(){
 					
 				}
 				else{
-					alert("Sipariþ bilgilerini kontrol etmeni öneririm. Girdiðine emin misin? ;o)");
+					alert("SipariÅŸ bilgilerine bir gÃ¶z at.");
 				}
 			}
 		);
 	}
 	else{
-		alert(":o(, Dükkan yoksa þipariþte yok.");
+		alert("DÃ¼kkan yoksa sipariÅŸ de yok.");
 	}
 }
 
@@ -233,8 +242,8 @@ function SiparislerimiGetir(){
 	
 	$.post("http://www.sagclick.com/BAKKALDAN/com/bakkaldan/DEBUG/debugger.php", { bilgi: postData}).done(
 	function(data){
-		alert(data);
-		$("#appOrdersList").html('Sipariþ verilerini hazýrlýyoruz, az sabýr.');
+	
+		$("#appOrdersList").html('SipariÅŸler yÃ¼kleniyor.');
 		var sonuc = JSON.parse(data);
 		if(sonuc.response==true){
 			
@@ -268,7 +277,7 @@ function SiparislerimiGetir(){
 		}
 		else{
 			$("#appOrdersList").html('');
-			alert("Bir hata oluþtu, lütfen tekrar deneyiniz.");
+			//alert("Bir hata oluÅŸtu, lÃ¼tfen tekrar dene.");
 		}
 	}
 	);
@@ -276,19 +285,19 @@ function SiparislerimiGetir(){
 
 
 function SiparisIptal(siparisId){
-	if(confirm("Sipariþi iptal etmek istediðinden eminsin deðil mi?")==true){
+	if(confirm("SipariÅŸini iptal edelim mi?")==true){
 		var postData = '{"aksiyon":"siparisIptal","data":{"siparisId":"'+siparisId+'"}}';
 
 		
 		$.post("http://www.sagclick.com/BAKKALDAN/com/bakkaldan/DEBUG/debugger.php", { bilgi: postData}).done(
 		function(data){
-			alert(data);
+		
 			var sonuc = JSON.parse(data);
 			if(sonuc.response==true){
 				SiparislerimiGetir();
 			}
 			else{
-				alert("Yetki sende deðil, boþuna deneme.");
+				alert("Bir hata oluÅŸtu, lÃ¼tfen tekrar dene.");
 			}
 		}
 		);
@@ -302,22 +311,23 @@ function AdreslerimiGetir(){
 	
 	$.post("http://www.sagclick.com/BAKKALDAN/com/bakkaldan/DEBUG/debugger.php", { bilgi: postData}).done(
 	function(data){
-		alert(data);
-		$("#addressPopulatingForm").html('Adres verilerini hazýrlýyoruz, az sabýr.');
+	
+		$("#addressPopulatingForm").html('Adreslerin yÃ¼kleniyor.');
 		var sonuc = JSON.parse(data);
 		if(sonuc.response===true){
 			var checkStr = "";
+			var defaultStr = "";
 			$("#addressPopulatingForm").html('');
 			for(var i=0;i<sonuc.data.length;i++){
 				
 				checkStr = (i===0) ? "checked" : "";
-				
-				$("#addressPopulatingForm").append('<br><input type="radio" name="addressPicker" onclick="DefaultAdresimYap(\''+sonuc.data[i].adresId+'\')" '+checkStr+'>	<label style="  margin-bottom: 7px;  margin-top: 7px;" for="Adresim">'+sonuc.data[i].adresBaslik+'</label>	<button class="btn" style="display:inline-block;position:relative;float:right;background-color:#D94200;color:#fff;height:23px;padding:0px 5px;margin-top:8px;margin-left:8px;" onclick="AdresSil(\''+sonuc.data[i].adresId+'\');return false;"> X </button><button class="btn" style="display:inline-block;position:relative;float:right;background-color:#00A2D9;color:#fff;height:23px;padding:0px 3px;margin-top:8px;" onclick="AdresDuzenle(\''+sonuc.data[i].adresId+'\')">Düzenle</button>');
+				defaultStr = (i===0) ? "(Aktif)" : "";
+				$("#addressPopulatingForm").append('<br><input type="radio" name="addressPicker" onclick="DefaultAdresimYap(\''+sonuc.data[i].adresId+'\')" '+checkStr+'>	<label style="  margin-bottom: 7px;  margin-top: 7px;text-transform:capitalize" for="Adresim">'+sonuc.data[i].adresBaslik+defaultStr+'</label>	<button class="btn" style="display:inline-block;position:relative;float:right;background-color:#D94200;color:#fff;height:23px;padding:0px 5px;margin-top:8px;margin-left:8px;" onclick="AdresSil(\''+sonuc.data[i].adresId+'\',\''+sonuc.data[i].adresBaslik+'\');return false;"> X </button><button class="btn" style="display:inline-block;position:relative;float:right;background-color:#00A2D9;color:#fff;height:23px;padding:0px 3px;margin-top:8px;" onclick="AdresDuzenlenecek(\''+sonuc.data[i].adresId+'\');return false;">DÃ¼zenle</button>');
 			}
 		}
 		else{
 			$("#addressPopulatingForm").html('');
-			alert("Bir hata oluþtu, lütfen tekrar deneyiniz.");
+			alert("Bir hata oluÅŸtu, lÃ¼tfen tekrar dene.");
 		}
 	}
 	);
@@ -325,20 +335,20 @@ function AdreslerimiGetir(){
 
 }
 
-function AdresSil(adresId){
-	if(confirm("Adresi silmek istediðinden eminsin deðil mi?")==true){
+function AdresSil(adresId,adresBaslik){
+	if(confirm(adresBaslik + " adresini silelim mi?")==true){
 		var postData = '{"aksiyon":"adresSil","data":{"adresId":"'+adresId+'"}}';
 
 		
 		$.post("http://www.sagclick.com/BAKKALDAN/com/bakkaldan/DEBUG/debugger.php", { bilgi: postData}).done(
 		function(data){
-			alert(data);
+		
 			var sonuc = JSON.parse(data);
 			if(sonuc.response==true){
 				AdreslerimiGetir();
 			}
 			else{
-				alert("Yetki sende deðil, boþuna deneme.");
+				alert("En az 1 kayÄ±tlÄ± adresin olmalÄ±.");
 			}
 		}
 		);
@@ -352,80 +362,226 @@ function DefaultAdresimYap(adresId){
 	
 	$.post("http://www.sagclick.com/BAKKALDAN/com/bakkaldan/DEBUG/debugger.php", { bilgi: postData}).done(
 	function(data){
-		alert(data);
+		
 		var sonuc = JSON.parse(data);
 		if(sonuc.response==true){
 			AdreslerimiGetir();
 		}
 		else{
-			alert("Yetki sende deðil, boþuna deneme.");
+			alert("Bir hata oluÅŸtu, lÃ¼tfen tekrar dene.");
 		}
 	}
 	);
 	
 }
 
-function YeniAdresEkleme(){
+function DefaultAdresiGetir(){
+	
+	var postData = '{"aksiyon":"defaultAdresiGetir","data":{"":""}}';
 
-
-	function onSuccess(position) {
-		alert("Bulduk Seni! :o)");
+	
+	$.post("http://www.sagclick.com/BAKKALDAN/com/bakkaldan/DEBUG/debugger.php", { bilgi: postData}).done(
+	function(data){
 		
-		 GLat = position.coords.latitude;
-		 GLng = position.coords.longitude;
-		 var myLatlng = new google.maps.LatLng(GLat,GLng);
-		  var mapOptions = {
-			zoom: 16,
-			center: myLatlng
-		  }
-		  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-		  var marker = new google.maps.Marker({
-			  position: myLatlng,
-			  map: map,
-			  title: 'Hello World!'
-		  });
-
-		$("#gpstenBulButonu").prop("disabled", false);
-		$("#gpstenBulButonu").text('GPS\'i AÇTIM, BENÝ BUL');
-		$("#noGpsText").css("display","none");
-		$("#genelAdresGirme").css("display","block");
+		var sonuc = JSON.parse(data);
+		if(sonuc.response==true){
+	
+			$("#siparisDefaultAdres").html(sonuc.data.defaultAdresBaslik);
+		}
+		else{
+			alert("Bir hata oluÅŸtu, lÃ¼tfen tekrar dene.");
+		}
+	}
+	);
+	
+}
+function IlkDefaAdresEkleme(){
+	
+	function onSuccess(position) {
+		alert("Bulduk Seni!");
+		
+		$("#gpstenBulButonuFirstTime").prop("disabled", false);
+		$("#gpstenBulButonuFirstTime").text('GPS\'i AÃ‡TIM, BENÄ° BUL');
+		$("#noGpsTextFirstTimer").css("display","none");
+		$("#addedFirstAddressList").css("display","block");
+		GLat = position.coords.latitude;
+		GLng = position.coords.longitude;
+		initializeNew();
 	};
 
 
 	function onError(error) {
+		alert("GPS'ini aÃ§Ä±p, tekrar dene.");
+		$("#gpstenBulButonuFirstTime").prop("disabled", false);
+		$("#gpstenBulButonuFirstTime").text('GPS\'i AÃ‡TIM, BENÄ° BUL');
+		$("#addedFirstAddressList").css("display","none");
+		$("#noGpsTextFirstTimer").css("display","block");
+	}
+
+	navigator.geolocation.getCurrentPosition(onSuccess, onError, {  enableHighAccuracy: true });
+	$("#gpstenBulButonuFirstTime").prop("disabled", true);
+	$("#gpstenBulButonuFirstTime").text("AZ KALDI, SENÄ° BULMAK ÃœZEREYÄ°Z");
+}
+function YeniAdresEkleme(){
+
+
+	function onSuccess(position) {
+		alert("Bulduk Seni!");
+
 		$("#gpstenBulButonu").prop("disabled", false);
-		$("#gpstenBulButonu").text('GPS\'i AÇTIM, BENÝ BUL');
+		$("#gpstenBulButonu").text('GPS\'i AÃ‡TIM, BENÄ° BUL');
+		$("#noGpsText").css("display","none");
+		$("#genelAdresGirme").css("display","block");
+		$("#adresEklemeDuzenleme").html('<button type="submit" class="btn" style="width:48%;width: 48%;background-color:rgb(189, 53, 53);color:white;" onclick=\'VazgecKapama();return false;\'>VAZGEÃ‡</button>	<button type="submit" class="btn btn-blue " style="width:48%" onclick=\'YeniAdresKaydi("InApp");return false;\' >KAYDET</button>');
+		GLat = position.coords.latitude;
+		GLng = position.coords.longitude;
+		initialize();
+	};
+
+
+	function onError(error) {
+		alert("GPS'ini aÃ§Ä±p, tekrar dene.");
+		$("#gpstenBulButonu").prop("disabled", false);
+		$("#gpstenBulButonu").text('GPS\'i AÃ‡TIM, BENÄ° BUL');
 		$("#genelAdresGirme").css("display","none");
 		$("#noGpsText").css("display","block");
 	}
 
 	navigator.geolocation.getCurrentPosition(onSuccess, onError, {  enableHighAccuracy: true });
 	$("#gpstenBulButonu").prop("disabled", true);
-	$("#gpstenBulButonu").text("Ýz üstündeyiz, lütfen bir þeye dokunma. Çok az kaldý...");
+	$("#gpstenBulButonu").text("AZ KALDI, SENÄ° BULMAK ÃœZEREYÄ°Z");
+
 }
 
-function YeniAdresKaydi(){
-	var title = $("#addressTitle").val();
-	var directions = $("#addressDirection").val();
+function YeniAdresKaydi(str){
+	
+	var title = $("#addressTitle"+str).val();
+	var directions = $("#addressDirection"+str).val();
 	if(GLat!==null && GLng!==null){
 		var postData = '{"aksiyon":"adresEkle","data":{"title":"'+title+'","directions":"'+directions+'","lat":"'+GLat+'","lng":"'+GLng+'"}}';
+		if(str=="FirstTimer"){
+			var name = $("#nameSurname").val();
+			var phone = $("#userTel").val();
+			postData = '{"aksiyon":"ilkKayitGuncelleme","data":{"name":"'+name+'","phone":"'+phone+'","title":"'+title+'","directions":"'+directions+'","lat":"'+GLat+'","lng":"'+GLng+'"}}';
+		}
 
-		
 		$.post("http://www.sagclick.com/BAKKALDAN/com/bakkaldan/DEBUG/debugger.php", { bilgi: postData}).done(
 		function(data){
-			alert(data);
+			
 			var sonuc = JSON.parse(data);
 			if(sonuc.response==true){
-				AdreslerimiGetir();
-				$("#addNewAddress").hide();
-				$("#addedAddressList").fadeIn();
+				
+				if(str=="InApp"){
+					AdreslerimiGetir();
+					$("#addNewAddress").hide();
+					$("#addedAddressList").fadeIn();
+				}
+				else{
+					$("#profilAdSoyad").html(name);
+					$("#profilTelefon").html(phone);
+					DefaultAdresiGetir();
+					BakkallariGetir();
+					$(".firstTimeSection").delay(1500).toggle(0);
+					$(".inAppSection").delay(2500).fadeToggle(0);
+					
+				}
+				
 			}
 			else{
-				alert("Bir þeyler yanlýþ.");
+				alert("Bir hata oluÅŸtu, lÃ¼tfen tekrar dene.");
 			}
 		}
 		);
 		
 	}
+}
+
+function AdresDuzenlenecek(adresId){
+	var postData = '{"aksiyon":"adresBilgileriniGetir","data":{"adresId":"'+adresId+'"}}';
+
+	
+	$.post("http://www.sagclick.com/BAKKALDAN/com/bakkaldan/DEBUG/debugger.php", { bilgi: postData}).done(
+	function(data){
+
+		var sonuc = JSON.parse(data);
+		if(sonuc.response==true){
+			$("#gpstenBulButonu").prop("disabled", false);
+			$("#gpstenBulButonu").text('GPS\'i AÃ‡TIM, BENÄ° BUL');
+			$("#addNewAddress").hide();
+			$("#addedAddressList").hide();
+			$("#addNewAddress").fadeIn();
+			$("#noGpsText").css("display","none");
+			$("#genelAdresGirme").css("display","block");
+			$("#adresEklemeDuzenleme").html('<button type="submit" class="btn" style="width:48%;width: 48%;background-color:rgb(189, 53, 53);color:white;" onclick=\'VazgecKapama();return false;\'>VAZGEÃ‡</button>	<button type="submit" class="btn btn-blue " style="width:48%" onclick=\'AdresDuzenle("'+adresId+'");return false;\' >KAYDET</button>');
+
+			$("#addressTitleInApp").val(sonuc.data.addressTitle);
+			$("#addressDirectionInApp").val(sonuc.data.addressDirections);
+			GLat=sonuc.data.addressLat;
+			GLng=sonuc.data.addressLng;
+			initialize();
+			  
+			
+		}
+		else{
+			alert("Bir hata oluÅŸtu, lÃ¼tfen tekrar dene.");
+		}
+	}
+	);
+}
+
+function VazgecKapama(){
+	
+	$("#addNewAddress").hide();
+	$("#addedAddressList").delay(500).fadeIn(0);
+}
+
+function AdresDuzenle(adresId){
+	var title = $("#addressTitleInApp").val();
+	var directions = $("#addressDirectionInApp").val();
+	if(GLat!==null && GLng!==null){
+		var postData = '{"aksiyon":"adresDuzenle","data":{"adresId":"'+adresId+'","title":"'+title+'","directions":"'+directions+'","lat":"'+GLat+'","lng":"'+GLng+'"}}';
+
+		
+		$.post("http://www.sagclick.com/BAKKALDAN/com/bakkaldan/DEBUG/debugger.php", { bilgi: postData}).done(
+		function(data){
+		
+			var sonuc = JSON.parse(data);
+			if(sonuc.response==true){
+				AdreslerimiGetir();
+				
+				$("#addNewAddress").hide();
+				$("#addedAddressList").fadeIn();
+				
+			}
+			else{
+				alert("Bir hata oluÅŸtu, lÃ¼tfen tekrar dene.");
+			}
+		}
+		);
+		
+	}
+}
+
+function BeniBul(str){
+	function onSuccess(position) {
+		alert("Bulduk Seni!");
+		
+		 GLat = position.coords.latitude;
+		 GLng = position.coords.longitude;
+		 if(str==undefined) initialize();
+		 else if(str=="new") initializeNew();
+	};
+
+
+	function onError(error) {
+		alert("GPS'ini aÃ§Ä±p, tekrar dene.");
+		$("#gpstenBulButonu").prop("disabled", false);
+		$("#gpstenBulButonu").text('GPS\'i AÃ‡TIM, BENÄ° BUL');
+		$("#genelAdresGirme").css("display","none");
+		$("#noGpsText").css("display","block");
+	}
+
+	navigator.geolocation.getCurrentPosition(onSuccess, onError, {  enableHighAccuracy: true });
+	$("#gpstenBulButonu").prop("disabled", true);
+	$("#gpstenBulButonu").text("AZ KALDI, SENÄ° BULMAK ÃœZEREYÄ°Z");
 }
